@@ -1,3 +1,6 @@
+
+## ici on scrape wikipédia pour obtenir la listes des coureurs ayant obtenu des "prix sepeciaux"
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -11,9 +14,10 @@ soup = BeautifulSoup(response.content, 'html.parser')
 
 # Trouver le tableau "Palmarès complet"
 table = soup.find('table', {'class': 'wikitable'})
+assert table != None
 
 # Extraire les données du tableau
-rows = table.find_all('tr')
+rows = table.find_all('tr') # type: ignore
 data = []
 for row in rows:
     cols = row.find_all(['th', 'td'])

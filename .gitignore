@@ -1,0 +1,7 @@
+# scrapping results
+*csv
+*.xlsx
+
+# python
+.ipynb_checkpoints
+

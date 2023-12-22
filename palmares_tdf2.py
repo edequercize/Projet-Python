@@ -1,13 +1,14 @@
 import requests
-import urllib3
 from bs4 import BeautifulSoup
 import csv
-import re 
+import pandas as pd
+
+# Lire le fichier CSV contenant les noms des coureurs
+coureur_tdf = pd.read_csv("TDF_Riders_History.csv")
 
 
 
-# Liste des noms des coureurs (assurez-vous que cette liste est correctement définie)
-noms_coureurs = [
+liste_coureurs_tdf = [
     "Henri Abadie", "Djamolidine Abdoujaparov", "Jean Adriaenssens", "Mario Aerts",
     "Christophe Agnolutto", "Joaquim Agostinho", "Lucien Aimar", "Gonzalo Aja",
     "Julian Alaphilippe", "Robert Alban", "Raul Alcala", "Rudi Altig",
@@ -179,59 +180,61 @@ noms_coureurs = [
     "Joop Zoetemelk", "Haimar Zubeldia", "Alex Zülle"
     ]
 
-
-
-
-
-# Désactiver les avertissements sur les requêtes HTTPS non vérifiées
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+# Liste des noms des coureurs
+noms_coureurs = list(set(coureur_tdf['Rider'].str.title().tolist()))
 
 def format_nom_url(nom):
     mots = nom.split()
     nom_famille = mots[-1].lower()
+    
+    # Vérifier si le nom de famille est précédé d'une particule
     if len(mots) > 2 and mots[-2][0].isupper():
         particule = mots[-2].lower()
         nom_famille = f"{particule}_{nom_famille}"
+    
     return nom_famille
 
-
+# Préparation des données à enregistrer
 data_to_save = []
-data_dict = {}
 
-for nom_coureur in noms_coureurs:  
-    data_dict[nom_coureur] = {'Participations': 0, 'Victoires': 0, 'Maillot Jaune': 0}
+# Boucle sur les noms des coureurs
+for nom_coureur in liste_coureurs_tdf:  
+    # Construction de l'URL
     url = f"https://ledicodutour.com/coureurs/coureurs/coureurs_{format_nom_url(nom_coureur)[0].lower()}/{format_nom_url(nom_coureur)}.html"
 
     try:
+        # Récupération du contenu de la page
         response = requests.get(url, verify=False)
         if response.status_code != 200:
             print(f"Page non trouvée pour {nom_coureur} à l'URL: {url}")
             continue
         html_content = response.content
+
+        # Parsing du contenu HTML
         soup = BeautifulSoup(html_content, 'html.parser')
 
-        infos_td511 = soup.find_all("td", class_="td511")
-        for info in infos_td511:
-            text = info.get_text(strip=True)
-            if "Participations au Tour" in text:
-                data_dict[nom_coureur]['Participations'] = int(re.findall(r'\d+', text)[0])  # Utilisation d'une expression régulière
-            elif "Victoire d'étape" in text:
-                data_dict[nom_coureur]['Victoires'] = int(re.findall(r'\d+', text)[0])  # Utilisation d'une expression régulière
-            elif "Jour en maillot jaune" in text:
-                data_dict[nom_coureur]['Maillot Jaune'] = int(re.findall(r'\d+', text)[0])  # Utilisation d'une expression régulière
+        # Extraction et formatage du nom du coureur
+        h1_element = soup.find('h1')
+        if h1_element:
+            nom_du_coureur = h1_element.get_text(strip=True).replace(' dans le Tour de France', '')
+            print(f"Traitement de : {nom_du_coureur}")  # Log pour débogage
+
+            # Extraction des informations
+            infos_td511 = soup.find_all("td", class_="td511")
+            for info in infos_td511:
+                text = info.get_text(strip=True)
+                if "Participations au Tour" in text or "Victoire d'étape" in text or "Jour en maillot jaune" in text or "Passages en tête à un col" in text:
+                    data_to_save.append([nom_du_coureur,text])
+        else:
+            print(f"Aucun élément 'h1' trouvé pour l'URL : {url}")
+
     except requests.exceptions.RequestException as e:
         print(f"Erreur lors de l'accès à l'URL {url}: {e}")
 
-for coureur, infos in data_dict.items():
-    data_to_save.append([
-        coureur,
-        infos['Participations'],
-        infos['Victoires'],
-        infos['Maillot Jaune']
-    ])
+# Nom du fichier CSV
+filename = "palmares_tdf.csv"
 
-filename = "palmares_tdf2.csv"
-
+# Écriture des données dans un fichier CSV
 with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
     csvwriter = csv.writer(csvfile)
     for row in data_to_save:
