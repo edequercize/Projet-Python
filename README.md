@@ -1,0 +1,1 @@
+Tous les fichiers python  commençant par scrapping ont permis de récolter des informations soit sur Wikipédia soit sur LeDicoduTour qui nous avait donné son accord pour utiliser les données de son site. Run ces codes peut prendre plus d'une heure, je recommande de ne pas les faire tourner
