@@ -10,6 +10,7 @@ def calculer_vitesse(dataframe):
     return dataframe
 
 moyenne_par_categorie = donnees.groupby('meteo_categorie')['Vitesse (km/h)'].mean().reset_index()
+#Catégories mentionnées : Categorie_Beau_Temps;Categorie_Pluvieux;Categorie_venteux;Categorie_Caniculaire;Categorie_Changeant
 
 # Sélectionner la référence (dans ce cas, "beau" temps)
 reference = moyenne_par_categorie[moyenne_par_categorie['meteo_categorie'] == 'Categorie_Beau_Temps']['Vitesse (km/h)'].iloc[0]
@@ -18,3 +19,4 @@ reference = moyenne_par_categorie[moyenne_par_categorie['meteo_categorie'] == 'C
 moyenne_par_categorie['impact_relatif'] = moyenne_par_categorie['Vitesse (km/h)'] / reference
 
 print(moyenne_par_categorie)
+
