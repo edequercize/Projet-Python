@@ -179,7 +179,7 @@ noms_coureurs = [
     "Joop Zoetemelk", "Haimar Zubeldia", "Alex Zülle"
     ]
 
-
+print(len(noms_coureurs)) #Il y a 910 coureurs dans la liste.
 
 
 
