@@ -1,10 +1,12 @@
 import pandas as pd
 
 def calculer_vitesse(dataframe):
-    if 'temps' not in dataframe.columns or 'distance' not in dataframe.columns:
-        raise ValueError("Le dataframe doit avoir des colonnes 'temps' et 'distance'.")
+    if 'TotalSeconds' not in dataframe.columns or 'Distance (km)' not in dataframe.columns:
+        raise ValueError("Le dataframe doit avoir des colonnes 'TotalSeconds' et 'Distance (km)'.")
 
     # Calculer la vitesse en km/h
-    dataframe['vitesse'] = (dataframe['distance'] / dataframe['temps']) * 3600
+    dataframe['Vitesse (km/h)'] = (dataframe['Distance (km)'] / dataframe['TotalSeconds']) * 3600
 
     return dataframe
+
+moyenne_par_categorie = donnees.groupby('categorie_temps')['Vitesse (km/h)'].mean().reset_index()
