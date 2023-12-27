@@ -1,0 +1,10 @@
+import pandas as pd
+
+def calculer_vitesse(dataframe):
+    if 'temps' not in dataframe.columns or 'distance' not in dataframe.columns:
+        raise ValueError("Le dataframe doit avoir des colonnes 'temps' et 'distance'.")
+
+    # Calculer la vitesse en km/h
+    dataframe['vitesse'] = (dataframe['distance'] / dataframe['temps']) * 3600
+
+    return dataframe
