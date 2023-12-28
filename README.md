@@ -37,4 +37,7 @@ Une fois que l'importation les différentes bases de données collectées lors d
 *Fusion des bases de données et suppression des colonnes redondantes ou inutiles :*
 L'identification les clés de jointure entre les différentes bases de données a ensuite permis de les fusionner en conséquence. Chaque colonne de chaque base de données a été analyée pour identifier les redondances ou qui n'apportaient pas de valeur significative à l'analyse. La suppression des colonnes inutiles simplifie les données et améliore les performances du modèle.
 
+*Création de nouvelles variables :*
+
+
 Une fois ces étapes de transformation des données effectuées, l'ensemble de données est prêt à être utilisé pour la création du modèle prédictif.
