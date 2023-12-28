@@ -32,12 +32,16 @@ Nous avons pris soin d'obtenir toutes les autorisations nécessaires pour accéd
 La transformation des données est une étape cruciale dans le processus d'analyse et de modélisation. Elle vise à préparer les données brutes pour qu'elles soient exploitables par le modèle prédictif. Voici les principales étapes de transformation des données pour la prédiction du TDF:
 
 *Chargement des bases de données et traitement des erreurs et des valeurs manquantes:*
-Une fois que l'importation les différentes bases de données collectées lors de l'étape de recherche de données a été faite, il a fallu identifier et traiter les erreurs éventuelles dans les données. Cela peut inclure la correction de valeurs aberrantes ou la suppression de lignes contenant des erreurs, des valeurs manquantes. 
+On a débuté par télécharger les bases de données brutes depuis un drive pubic. Une fois que l'importation les différentes bases de données collectées lors de l'étape de recherche de données a été faite, il a fallu identifier et traiter les erreurs éventuelles dans les données. Cela peut inclure la correction de valeurs aberrantes ou la suppression de lignes contenant des erreurs, des valeurs manquantes. 
+Le fichier principal, "test_merge", a été dédié à la construction, au nettoyage, et à la génération de statistiques descriptives pour assurer la qualité des données utilisées dans le modèle prédictif.
 
 *Fusion des bases de données et suppression des colonnes redondantes ou inutiles :*
 L'identification les clés de jointure entre les différentes bases de données a ensuite permis de les fusionner en conséquence. Chaque colonne de chaque base de données a été analyée pour identifier les redondances ou qui n'apportaient pas de valeur significative à l'analyse. La suppression des colonnes inutiles simplifie les données et améliore les performances du modèle.
+La première base de données, "coureur_tdf", a été soigneusement nettoyée en conservant des informations cruciales telles que le nom du coureur, le classement par année, l'équipe, le temps, l'année, la distance, etc. Une deuxième base de données, "prix_coureur_tdf", a été téléchargée et nettoyée, avec une attention particulière portée à la correction des erreurs de scraping concernant les gagnants des étapes et les porteurs du maillot jaune. 
 
 *Création de nouvelles variables :*
+La création d'un dictionnaire répertoriant les victoires des coureurs a permis d'améliorer la qualité des données, tandis qu'une fusion avec la première base de données a été réalisée pour intégrer ces informations. Cette fusion a conduit à la création d'une base de données consolidée, "merged_df", qui a ensuite fait l'objet d'un nettoyage approfondi.
+Une colonne supplémentaire, "classement_equipe", a été créée pour évaluer les performances des équipes en agrégeant les trois temps les plus faibles des coureurs. Cela a contribué à définir le classement final des équipes, une mesure importante pour l'analyse et la prédiction.
+En vue de la création du modèle prédictif, une fonction a été développée pour normaliser les classements d'équipes, fournissant ainsi une échelle entre 0 et 1, où 1 représente le classement le moins favorable. Cette normalisation facilitera la tâche du modèle lors de la prédiction.
 
-
-Une fois ces étapes de transformation des données effectuées, l'ensemble de données est prêt à être utilisé pour la création du modèle prédictif.
+Enfin, la base de données finale, "df_trie", a été sauvegardée au format CSV, comprenant des colonnes essentielles telles que le nom du coureur, le nombre de Tours de France, le nombre de victoires d'étapes, le nombre de jours en maillot jaune, l'équipe, l'année, la distance, le nombre d'étapes, les temps totaux, et d'autres caractéristiques pertinentes. Une fois ces étapes de transformation des données effectuées, l'ensemble de données est prêt à être utilisé dans le processus de modélisation pour la prédiction du Tour de France.
