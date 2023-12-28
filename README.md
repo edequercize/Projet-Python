@@ -8,3 +8,23 @@ La problématique centrale de cette étude se concentre sur la prédiction, en f
 
 En se basant sur les données disponibles, cette recherche vise à répondre aux questions suivantes : Quels sont les facteurs cruciaux qui contribuent au succès individuel d'un coureur au Tour de France ? Comment ces caractéristiques varient-elles pour les équipes dans le cadre du classement par équipes ? Pour répondre à ces interrogations, une approche multidimensionnelle sera adoptée, prenant en compte des variables telles que les performances individuelles, grâce à certaines compétitions passées, les performances spécifiques à certaines étapes, la catégorie météo, et d'autres paramètres clés.
 
+**Étape 2 : Recherche de données**
+
+Pour mener à bien notre projet de prédiction du Tour de France (TDF), nous avons entrepris une recherche de données provenant de sources variées, fiables et autorisées.
+
+*Base de données initiale (GitHub) :*
+Nous avons débuté notre analyse en exploitant une base de données préexistante disponible sur GitHub, créée par thomascamminady et intitulée "TDF_Riders_History.csv". Cet ensemble de données initiales comprenait des informations sur les coureurs participant au Tour de France ainsi que leurs temps respectifs.
+
+*Scraping des données sur Wikipedia :*
+Afin d'enrichir notre base de données initiale, nous avons effectué un scrapping de la page Wikipedia dédiée au palmarès des coureurs du Tour de France. Cela inclut les victoires, les grands prix de la montagne, les classements par points, les distinctions du meilleur jeune et les prix de la combativité. Ces informations sont essentielles pour évaluer la performance et la polyvalence des coureurs.
+
+*Scraping sur LeDicoDuTour :*
+Nous avons également consulté le site LeDicoDuTour pour obtenir des détails précis sur les différentes étapes du Tour de France, classées par typologie (plat, montagne, etc.) et par année. Ces données nous permettent d'analyser les performances des coureurs et d'entraîner le modèle de prédiction.
+
+*Scraping de la météo :*
+La météo joue un rôle significatif dans les performances des cyclistes. Par conséquent, nous avons extrait des données météorologiques pertinentes du site http://www.memoire-du-cyclisme.eu/. Ces informations incluent les conditions météorologiques par étape du Tour de France, permettant une analyse approfondie des facteurs environnementaux influençant les résultats.
+
+*Autorisations et remerciements :*
+Nous avons pris soin d'obtenir toutes les autorisations nécessaires pour accéder et utiliser les données. En particulier, nous tenons à exprimer notre gratitude envers les contributeurs de www.memoire-du-cyclisme.eu et de LeDicoDuTour.com qui ont généreusement autorisé l'utilisation de leurs informations, ainsi qu'aux sites Web tels que Wikipedia.
+
+
