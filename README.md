@@ -1,4 +1,11 @@
-Tous les fichiers python  commençant par scrapping ont permis de récolter des informations soit sur Wikipédia soit sur LeDicoduTour qui nous avait donné son accord pour utiliser les données de son site. Run ces codes peut prendre plus d'une heure, je recommande de ne pas les faire tourner
+# Python pour la Data Science - Projet Tour de France (TDF)
+> 1 semestre 2A ENSAE, IPP
+Rascoussier Matthieu, Salomé C, Eloi de Quercize 
+
+## Description du projet
+Fichier principal : `Main_TDF.ipynb`
+
+Tous les fichiers python dans le dossier scrapping_scripts ont permis de récolter des informations soit sur Wikipédia soit sur LeDicoduTour qui nous avait donné son accord pour utiliser les données de son site. Run ces codes peut prendre plus d'une heure, je recommande de ne pas les faire tourner.
 
 **Étape 1 : Problématique - Prédiction du Tour de France (individuel et par équipes)**
 
