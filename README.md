@@ -27,4 +27,14 @@ La météo joue un rôle significatif dans les performances des cyclistes. Par c
 *Autorisations et remerciements :*
 Nous avons pris soin d'obtenir toutes les autorisations nécessaires pour accéder et utiliser les données. En particulier, nous tenons à exprimer notre gratitude envers les contributeurs de www.memoire-du-cyclisme.eu et de LeDicoDuTour.com qui ont généreusement autorisé l'utilisation de leurs informations, ainsi qu'aux sites Web tels que Wikipedia.
 
+**Étape 3 : Transformation des données**
 
+La transformation des données est une étape cruciale dans le processus d'analyse et de modélisation. Elle vise à préparer les données brutes pour qu'elles soient exploitables par le modèle prédictif. Voici les principales étapes de transformation des données pour la prédiction du TDF:
+
+*Chargement des bases de données et traitement des erreurs et des valeurs manquantes:*
+Une fois que l'importation les différentes bases de données collectées lors de l'étape de recherche de données a été faite, il a fallu identifier et traiter les erreurs éventuelles dans les données. Cela peut inclure la correction de valeurs aberrantes ou la suppression de lignes contenant des erreurs, des valeurs manquantes. 
+
+*Fusion des bases de données et suppression des colonnes redondantes ou inutiles :*
+L'identification les clés de jointure entre les différentes bases de données a ensuite permis de les fusionner en conséquence. Chaque colonne de chaque base de données a été analyée pour identifier les redondances ou qui n'apportaient pas de valeur significative à l'analyse. La suppression des colonnes inutiles simplifie les données et améliore les performances du modèle.
+
+Une fois ces étapes de transformation des données effectuées, l'ensemble de données est prêt à être utilisé pour la création du modèle prédictif.
