@@ -1,8 +1,10 @@
+############################################
+#  Scrapping LeDicoDuTour pour les étapes  #
+############################################
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-
-
 
 def decennie(year):
     decen = []
@@ -19,8 +21,6 @@ def decennie(year):
         borne_inf = milliers*1000 + centaines*100 + (dizaines-1)*10 + 7
         borne_supp = milliers*1000 + centaines*100 + dizaines*10 + 6
     return((borne_inf,borne_supp))
-
-
 
 
 # Fonction pour extraire les vainqueurs d'une année donnée
