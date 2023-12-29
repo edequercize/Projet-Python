@@ -95,3 +95,13 @@ Dans cette étape, nous effectuons des analyses statistiques descriptives pour m
 *Effet du Nombre de Participations sur le Meilleur Classement :*
 
 1. Nuage de Points - Nombre de Participations vs Meilleur Classement Individuel depuis 1980 : Graphiques de l'effet du nombre de participations sur le meilleur classement individuel. Cette analyse permet de déterminer si une relation existe entre la fréquence de participation et les performances individuelles.
+
+**Étape 5 : Modèles prédictifs**
+ 
+Cette partie est l'aboutissement de notre projet. L'objectif est de tester différents modèles pour prédire au mieux les résultats individuels et par équipe du tour de France. 
+
+1. On test différents modèles prédictifs (Linear Regression, Support Vector Regression, Decision Tree Regressor, Random Forest Regressor, Gradient Boosting Regressor) pour le rang des différents coureurs cyclistes. On obtient globalement des modèles satisfaisant, le meilleur étant le Random Forest Regressor.
+
+2. On veut maintenant savoir quelles caractéristiques sont les plus importantes. Pour cela nous devons un modèle linéaire (Linear Regression). On obtient ensuite des résultats intéressants ! Etre le meilleur jeune ou gagner le grand prix de la montagne a un grand effet sur la victoire. En effet être un très bon grimpeur est connu pour être très important pour gagner le tour de France comme on peut le lire sur l'article suivant : https://www.pickx.be/fr/2071727/quel-est-le-profil-ideal-pour-gagner-le-tour-de-france.
+
+3. Enfin nous ré-appliquons la méthode 1 pour essayer de prédire le résultat par équipe. Cette fois ci le meilleur modèle est le Gradient Boosting Regressor. Les indicateurs sont, comme pour le classement individuel, satisfaisants.
